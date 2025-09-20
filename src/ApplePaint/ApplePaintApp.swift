@@ -72,6 +72,7 @@ struct ApplePaintApp: App {
             .windowStyle(.hiddenTitleBar)
             .windowToolbarStyle(.unified)
             .windowResizability(.contentSize)
+            .defaultPosition(.center)
         }
         .commands {
             CommandGroup(replacing: .newItem) {}

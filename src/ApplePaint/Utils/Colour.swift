@@ -1,4 +1,4 @@
-//
+i'm //
 //  Color.swift
 //  ApplePaint
 //
@@ -8,9 +8,9 @@
 import SwiftUI
 
 extension Color {
-    
+
     // MARK: Init Method for hex to Color
-    init(hex: String) {
+    init(hex: String, opacity: Double = 1) {
         var hexSanitized: String
         if hex.contains("#") {
             hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -25,9 +25,9 @@ extension Color {
         let g = Double((rgb >> 8) & 0xFF) / 255.0
         let b = Double(rgb & 0xFF) / 255.0
 
-        self.init(red: r, green: g, blue: b)
+        self.init(red: r, green: g, blue: b, opacity: opacity)
     }
-    
+
     // MARK: Color to hex String
     func toHex() -> String {
         guard let components = self.cgColor?.components else {
@@ -48,13 +48,13 @@ extension Color {
             let gray = Int(white * 255)
             return String(format: "#%02X%02X%02X", gray, gray, gray)
         }
-        
+
         return "#000000"
     }
 
     // MARK: Color Opposite
     func opposite() -> Color {
-        
+
         let ciColor = CIColor(color: NSColor(self))!
 
         let invertedRed = 1.0 - ciColor.red
@@ -67,8 +67,5 @@ extension Color {
             blue: invertedBlue
         )
     }
-    
+
 }
-
-
-
